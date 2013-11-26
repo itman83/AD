@@ -1,0 +1,554 @@
+<?php
+include('config.php');
+$last_msg_id=isset($_GET['last_msg_id']);
+$action=isset($_GET['action']);
+$cat = base64_decode($_GET['id']);
+if($action <> "get")
+{
+?>
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie10 lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie10 lt-ie9 lt-ie8 ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie10 lt-ie9 ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]>   <html class="no-js lt-ie10 ie9" lang="en"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->	<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+<meta name=viewport content="width=device-width, initial-scale=1.0, minimum-scale=1.0 maximum-scale=1.0">
+<title>CNFA News Ads</title>
+<link rel="stylesheet" media="all" href="css/style-cat.css"/>
+<link href="style.css" type="text/css" rel="stylesheet"/>
+<link rel="stylesheet" media="all" href="css/base.min.css" />
+<link rel="stylesheet" media="all" href="css/3-960-grid.css" />
+<!--<link href="responsive.css" rel="stylesheet" type="text/css" media="all"/>-->
+<link rel="stylesheet" type="text/css" href="js/demo.css">
+<!--<link rel="stylesheet" type="text/css" href="js/elastislide.css">-->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery-1.2.6.pack.js"></script>
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+			
+		function last_msg_funtion() 
+		{ 
+		   var city     = 	document.getElementsByName('city_name[]');
+		   var category = 	document.getElementsByName('cat_name[]');
+		  
+		   var city_id = '';
+		   for(var i = 0; i < city.length; i++)
+{
+	if( city[i].checked == true )
+			city_id =city_id + city[i].value+',';
+}
+var ids = city_id.substring(',', city_id.length - 1);
+
+
+var cat_id = '';
+		   for(var i = 0; i < category.length; i++)
+{
+	if( category[i].checked == true )
+			cat_id = cat_id + category[i].value+',';
+}
+var catids = cat_id.substring(',', cat_id.length - 1);
+if( cat_id == '' || cat_id == null )
+{
+catids = '0';	
+}
+
+           var ID=$(".message_box:last").attr("id");
+	if( city_id != '' ){
+		document.getElementById('0').style.display = 'none';
+			$('div#last_msg_loader').html('<img src="ajax_loader-2.gif">');
+			$.post("newspaper.php?action=get&id=<?=$cat?>&category="+catids+"&city="+ids+"&last_msg_id="+ID,
+			
+			function(data){
+				if (data != "") {
+				
+				$(".message_box:last").after(data);
+					$("#test").fadeIn(2000);
+					document.getElementById('test').id = '';
+				}
+				$('div#last_msg_loader').empty();
+			});
+		};  
+		}
+		$(window).scroll(function(){
+			if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+			   last_msg_funtion();
+			}
+		}); 
+		
+	});
+	
+	
+	function last_msg_funtion1() 
+		{ 
+		
+		   var city     = 	document.getElementsByName('city_name[]');
+		   var category = 	document.getElementsByName('cat_name[]');
+		 
+		   var city_id = '';
+		   for(var i = 0; i < city.length; i++)
+{
+	if( city[i].checked == true )
+			city_id =city_id + city[i].value+',';
+}
+var ids = city_id.substring(',', city_id.length - 1);
+
+
+ var cat_id = '';
+		   for(var i = 0; i < category.length; i++)
+{
+	if( category[i].checked == true )
+			cat_id = cat_id + category[i].value+',';
+}
+var catids = cat_id.substring(',', cat_id.length - 1);
+if( cat_id == '' || cat_id == null )
+{
+catids = '0';	
+}
+
+           var ID='0';
+	if( city_id != '' ){
+		document.getElementById('0').style.display = 'none';
+		document.getElementById('clearall').innerHTML = "";
+document.getElementById('clearall').innerHTML = "<div align='left' class='message_box' style='display:block;' id='0'><h1>Please Select City</h1></div><div id='last_msg_loader'></div>";
+		document.getElementById('0').style.display = 'none';
+		
+			$('div#last_msg_loader').html('<img src="ajax_loader-2.gif">');
+			$.post("newspaper.php?action=get&id=<?=$cat?>&category="+catids+"&city="+ids+"&last_msg_id="+ID,
+			
+			function(data){
+				if (data != "") {
+				
+				$(".message_box:last").after(data);
+					$("#test").fadeIn(2000);
+					document.getElementById('test').id = '';
+				}
+				$('div#last_msg_loader').empty();
+			});
+		}; 
+		if( city_id == '' ){
+	document.getElementById('clearall').innerHTML = "";
+document.getElementById('clearall').innerHTML = "<div align='left' class='message_box' style='display:block;' id='0'><h1>Please Select City</h1></div><div id='last_msg_loader'></div>";
+		}
+		}
+		
+	</script>
+		<!-- JS -->
+		<script src="js/jquery-1.7.1.min.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/tabs.js"></script>
+		<!--<script src="js/css3-mediaqueries.js"></script>-->
+		<script src="js/jquery.columnizer.min.js"></script>
+		
+
+		<!-- Isotope -->
+		<script src="js/jquery.isotope.min.js"></script>
+		
+		<!-- Lof slider -->
+		<script src="js/jquery.easing.js"></script>
+		<script src="js/lof-slider.js"></script>
+		<!--<link rel="stylesheet" href="css/lof-slider.css" media="all"  />--> 
+		<!-- ENDS slider -->
+		
+		<!-- Tweet -->
+		<!--<link rel="stylesheet" href="css/jquery.tweet.css" media="all"  /> -->
+		<script src="js/tweet/jquery.tweet.js" ></script> 
+		<!-- ENDS Tweet -->
+		
+		<!-- superfish -->
+		<!--<link rel="stylesheet" media="screen" href="css/superfish.css" />--> 
+		<!--<script  src="js/superfish-1.4.8/js/hoverIntent.js"></script>-->
+		<script  src="js/superfish-1.4.8/js/superfish.js"></script>
+		<!--<script  src="js/superfish-1.4.8/js/supersubs.js"></script>-->
+		<!-- ENDS superfish -->
+		
+		<!-- prettyPhoto -->
+		<script  src="js/prettyPhoto/js/jquery.prettyPhoto.js"></script>
+		<!--<link rel="stylesheet" href="js/prettyPhoto/css/prettyPhoto.css"  media="screen" />-->
+		<!-- ENDS prettyPhoto -->
+		
+		<!-- poshytip -->
+		<!--<link rel="stylesheet" href="js/poshytip-1.1/src/tip-twitter/tip-twitter.css"  />-->
+		<!--<link rel="stylesheet" href="js/poshytip-1.1/src/tip-yellowsimple/tip-yellowsimple.css"  />-->
+		<script  src="js/poshytip-1.1/src/jquery.poshytip.min.js"></script>
+		<!-- ENDS poshytip -->
+		
+		<!-- JCarousel -->
+		<script type="text/javascript" src="js/jquery.jcarousel.min.js"></script>
+		<!--<link rel="stylesheet" media="screen" href="css/carousel.css" />--> 
+		<!-- ENDS JCarousel -->
+
+
+		<!-- GOOGLE FONTS -->
+		<!--<link href='http://fonts.googleapis.com/css?family=Voltaire' rel='stylesheet' type='text/css'>-->
+        <!--<link rel='stylesheet' id='default_secondary_font-css'  href='http://fonts.googleapis.com/css?family=Francois+One&#038;ver=3.5.1' type='text/css' media='all' />-->
+
+
+		<!-- modernizr -->
+		<script src="js/modernizr.js"></script>
+		
+		<!-- SKIN -->
+		<!--<link rel="stylesheet" media="all" href="css/skin.css"/>-->
+		
+		<!-- Less framework -->
+		<!--<link rel="stylesheet" media="all" href="css/lessframework.css"/>-->
+		
+		<!-- jplayer -->
+		
+		<!-- jplayer -->
+		<!--<link href="player-skin/jplayer-black-and-yellow.css" rel="stylesheet" type="text/css" />-->
+		<!--<script type="text/javascript" src="js/jquery.jplayer.min.js"></script>-->
+		
+		<!-- flexslider -->
+		<!--<link rel="stylesheet" href="css/flexslider.css" >-->
+		<script src="js/jquery.flexslider.js"></script>
+        
+        
+
+		<!--<link rel="stylesheet" href="bundle.css">-->
+<script>
+function check_all(source)
+{
+	
+var city = 	document.getElementsByName('city_name[]');
+if( source.checked == true )
+{
+	
+for(var i = 0; i < city.length; i++)
+{
+			city[i].checked = true;
+}
+document.getElementById('0').style.display = 'none';
+}
+if( source.checked == false )
+{
+for(var i = 0; i < city.length; i++)
+{
+			city[i].checked = false;
+}	
+document.getElementById('clearall').innerHTML = "";
+document.getElementById('clearall').innerHTML = "<div align='left' class='message_box' style='display:block;' id='0'><h1>Please Select City</h1></div><div id='last_msg_loader'></div>";
+
+}
+
+last_msg_funtion1();
+}
+
+
+
+
+function check_all_cat(source)
+{
+	
+var city = 	document.getElementsByName('cat_name[]');
+if( source.checked == true )
+{
+	
+for(var i = 0; i < city.length; i++)
+{
+			city[i].checked = true;
+}
+document.getElementById('0').style.display = 'none';
+}
+if( source.checked == false )
+{
+for(var i = 0; i < city.length; i++)
+{
+			city[i].checked = false;
+}	
+document.getElementById('clearall').innerHTML = "";
+document.getElementById('clearall').innerHTML = "<div align='left' class='message_box' style='display:block;' id='0'><h1>Please Select City</h1></div><div id='last_msg_loader'></div>";
+
+}
+
+last_msg_funtion1();
+}
+</script>
+</head>
+
+<body>
+<!--- start header ---->
+<header>
+	<!--- start header-inner ---->
+	<div class="header-inner">
+    	<!--- start header-top ---->
+    	<div class="header-top">
+        	<!--- start logo-area ---->
+            <div class="logo-area">
+                <a href="index.php"><img src="img/logo.png" border="0"/></a>
+            </div>
+            <!--- end logo-area ---->
+            <!--- start header-nav ---->
+            <div class="header-nav">
+            	<ul>
+                	<li><a href="#">Home</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <!--- end header-nav ---->
+            <!--- start social-area ---->
+            <div class="social-area">
+            	<a href="#"><img src="img/sina-weibo.png" border="0"/></a>
+                <a href="#"><img src="img/tencent.png" border="0"/></a>
+                <a href="#"><img src="img/we-chat.png" border="0"/></a>
+            </div>
+            <!--- end social-area ---->
+        </div>
+        <!--- end header-top ---->
+        <!--- start red-search-section ---->
+        <div class="red-search-section">
+        	<form action="" method="post" name="Query1" id="Query1" onSubmit="return compliment();">
+       		<div class="what-are-you-searching">
+            	<input id="What are you searching for?" class="what-are-you-searching-for" name="What are you searching for?" value="What are you searching for?" size="16" type="text" onBlur="if (this.value == ''){this.value = 'What are you searching for?'; }" onFocus="if (this.value == 'What are you searching for?') {this.value = ''; }" />
+            </div>
+            <div class="all-newspaper">
+            	<a href="#"><img src="img/down-arrow.png" border="0" align="right"/></a>
+                <p class="all-news-paper-content">All Newspaper</p>
+            </div>
+            <div class="all-categories">
+            	<a href="#"><img src="img/down-arrow.png" border="0" align="right"/></a>
+                <p class="all-news-paper-content">All Cities</p>
+            </div>
+            <div class="all-cities">
+            	<a href="#"><img src="img/down-arrow.png" border="0" align="right"/></a>
+                <p class="all-news-paper-content">All Categories</p>
+            </div>
+            
+            <input type="button" value="" id="" name="" class="search"/>
+            </form>
+        </div>
+        <!--- end red-search-section ---->
+    </div>
+    <!--- end header-inner ---->
+    <div class="border-line">
+    </div>
+</header>
+<!--- end header ---->
+	<div class="wrapper1">
+    	<!--- start fa-classified ---->
+    		<div class="fa-classified">
+				<?php
+				$query = mysql_fetch_array(mysql_query("SELECT * FROM newspapers WHERE id = '".base64_decode($_GET['id'])."'"));
+				?>
+
+
+            	<h4 class="fa"><?=$query['newspaper_name']?></h4>
+            </div>
+       </div>
+<!--- start section ---->
+<section>
+	<!--- start wrapper ---->
+	<div class="wrapper"> 
+        <!--- start portfolio-content ---->
+        <div id="portfolio-content" class="cf">        	
+				
+				
+				
+				<!--<ul id="filter-buttons">
+				 
+				
+				<!-- Filter container -->
+		  <div id="filter-container-category" class="cf">
+                
+		    	<figure class="web print">
+						<figcaption>
+										
+                          <div class="item-excerpt">
+                          	<div class="item-excerpt-inner">
+                            	
+                                <h6 class="news-paper-name">Select City</h6>
+                            </div>
+						  	<div class="classifiedd-news-category1">
+                            <div class="classifiedd-news-category1-list">
+                           <form name="select_city" method="post">
+                           <?php
+$city = mysql_query("SELECT * FROM cities");	
+?>
+						   <ul>
+                            <li><input  onClick="check_all(this);" type="checkbox" value="">SELECT ALL</li>
+                           <?php while( $cities = mysql_fetch_array($city) ){ ?>
+                           <li><input onClick="last_msg_funtion1();" name="city_name[]" type="checkbox" value="<?=$cities['id']?>"><?=$cities['city_name']?></li>
+                           <?php } ?>
+                           </ul>
+						  
+                            
+                    </form>        	
+                            
+                               </div>
+                            </div>
+                            
+						  </div>
+                            
+                           
+						</figcaption>
+					</figure>
+                    
+                    
+		  </div><!-- ENDS Filter container -->
+          
+          
+          <div id="filter-container-category" class="cf">
+                
+		    	<figure class="web print">
+						<figcaption>
+										
+                          <div class="item-excerpt">
+                          	<div class="item-excerpt-inner">
+                            	
+                                <h6 class="news-paper-name">Select Category</h6>
+                            </div>
+						  	<div class="classifiedd-news-category1">
+                            <div class="classifiedd-news-category1-list">
+                            
+                            
+                            
+                            
+                           <form name="select_cat" method="post">
+                          <?php
+				$query = mysql_fetch_array(mysql_query("SELECT * FROM newspapers WHERE id = '".base64_decode($_GET['id'])."'"));
+				?>
+                <ul>
+                            <li><input  onClick="check_all_cat(this);" type="checkbox" value="">SELECT ALL</li>
+                          <?php
+						   $data = mysql_query("SELECT * FROM category WHERE newspaper_id = '".$query['id']."'");
+				while( $category = mysql_fetch_array($data) )
+				{
+						   ?>
+                           
+                         
+                           
+                           
+                           <li><input onClick="last_msg_funtion1();" name="cat_name[]" type="checkbox" value="<?=$category['id']?>"><?=$category['category_name']?></li>
+                            <?php } ?>
+                           </ul>
+                          
+						  
+                            
+                    </form>        	
+                            
+                               </div>
+                            </div>
+                            
+						  </div>
+                            
+                           
+						</figcaption>
+					</figure>
+                    
+                    
+		  </div><!-- ENDS Filter container -->
+          
+          
+          <!-- Listing container -->
+		  <div id="filter-container-category" class="cf">
+                
+		    	<figure class="web print">
+						<figcaption>
+										
+                          <div class="item-excerpt">
+                          	<div class="item-excerpt-inner">
+                            	
+                                <h6 class="news-paper-name">Ads</h6>
+                            </div>
+						  	<div id="clearall" class="classifiedd-news-category2">
+                            	<?php
+
+include('load_first_newspaper.php');
+
+?>
+<div id="last_msg_loader"></div>
+</div>
+                       
+                                
+                               
+                            </div>
+                            
+						  </div>
+                            
+                           
+						</figcaption>
+					</figure>
+		  </div><!-- ENDS Filter Listing -->
+				
+			</div>
+        	<!--- end portfolio-content ---->
+        
+    </div>
+    <!--- end wrapper ---->
+</section>
+<!--- end section ---->
+<!--- start section ---->
+<footer>
+	<div class="footer-wrapper">
+    	<div class="footer-nav">
+        	<ul>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Help</a></li>
+                <li><a href="latest-clasified.php">Latest Classified</a></li>
+                <li><a href="#">Premium Classified</a></li>
+                <li><a href="#">Mobile</a></li>
+            </ul>
+        </div>
+        <div class="footer-nav1">
+        	<ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-copyright">
+    	<p class="fa-content"> &copy; Copyright <span class="footer-copyright-content">FA Classified Pvt. Ltd.</span> | Disclaimer, Terms of Service and Privacy policy</p>
+    </div>
+</footer>
+
+<script>
+		(function () {
+		
+		    // Create mobile element
+		    var mobile = document.createElement('div');
+		    mobile.className = 'nav-mobile';
+		    document.querySelector('.classifiedd-news-category1').appendChild(mobile);
+		
+		    // hasClass
+		    function hasClass(elem, className) {
+		        return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+		    }
+		
+		    // toggleClass
+		    function toggleClass(elem, className) {
+		        var newClass = ' ' + elem.className.replace(/[\t\r\n]/g, ' ') + ' ';
+		        if (hasClass(elem, className)) {
+		            while (newClass.indexOf(' ' + className + ' ') >= 0) {
+		                newClass = newClass.replace(' ' + className + ' ', ' ');
+		            }
+		            elem.className = newClass.replace(/^\s+|\s+$/g, '');
+		        } else {
+		            elem.className += ' ' + className;
+		        }
+		    }
+		
+		    // Mobile nav function
+		    var mobileNav = document.querySelector('.nav-mobile');
+		    var toggle = document.querySelector('.classifiedd-news-category1-list');
+		    mobileNav.onclick = function () {
+		        toggleClass(this, 'nav-mobile-open');
+		        toggleClass(toggle, 'nav-active');
+		    };
+		})();
+		</script>
+<!--- end section ---->
+</body>
+</html>
+         <?php
+}
+else
+{
+ echo '<div id="cl" style="display:block;">';
+include('load_second_newspaper.php');		
+	echo '</div>';
+		}
+		?>	
