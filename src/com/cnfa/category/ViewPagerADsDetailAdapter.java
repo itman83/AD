@@ -8,12 +8,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.cnfa.model.ADDetailComponent;
+import com.viewpagerindicator.IconPagerAdapter;
 
-public class ViewPagerADsDetailAdapter extends FragmentStatePagerAdapter{
+public class ViewPagerADsDetailAdapter extends FragmentStatePagerAdapter implements IconPagerAdapter {
 	private ArrayList<ADDetailComponent> _list;
 	Context mContext;
 	String btext;
 	int adsPosition;
+	int totalPages;
 	public ViewPagerADsDetailAdapter(FragmentManager fm,Context context,ArrayList<ADDetailComponent> list,String btext,int adsPosition) {
 		super(fm);
  		this._list = list;
@@ -30,9 +32,21 @@ public class ViewPagerADsDetailAdapter extends FragmentStatePagerAdapter{
 
 	@Override
 	public int getCount() {
-		int totalPages = _list.size();
+	 totalPages = _list.size();
 		return totalPages;
 	}
+
+	@Override
+	public int getIconResId(int index) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	 public void setCount(int count) {
+	        if (count > 0 && count <= 10) {
+	        	totalPages = count;
+	            notifyDataSetChanged();
+	        }
+	    }
 	
 
 }

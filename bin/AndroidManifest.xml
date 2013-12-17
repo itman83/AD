@@ -113,7 +113,13 @@
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="adjustPan" />
+         <activity
+            android:name="com.cnfa.Activity.CopyOfAdsDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name="com.cnfa.Activity.SearchAdsDetailActivity"></activity>
+        
     </application>
 
 </manifest>

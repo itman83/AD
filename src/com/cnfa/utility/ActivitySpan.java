@@ -35,6 +35,9 @@ public class ActivitySpan extends ClickableSpan {
 
 	@Override
 	public void onClick(View v) {
+		if (keyword.length()>6)
+		{
+
 		TextView phoneTextView;
 		LinearLayout linearLayout;
 		LayoutInflater inflater = (LayoutInflater) mContext
@@ -96,6 +99,7 @@ public class ActivitySpan extends ClickableSpan {
 			}
 
 		});
+		}
 
 	}
 

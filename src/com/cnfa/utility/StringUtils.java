@@ -13,6 +13,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -34,16 +35,26 @@ public class StringUtils {
 		SpannableString spannable = new SpannableString(string);
 		Matcher matcher = pattern.matcher(spannable);
 		while (matcher.find()) {
+			
+			//Log.d("ABCDEFDH", "ABCDEFDH"+matcher.toString().length()+"/////" + spannable.length());
 			spannable.setSpan(new ActivitySpan(matcher.group(), context),
 					matcher.start(), matcher.end(),
 					Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			int count = matcher.end()-matcher.start();
+			//Log.d("COUNTTT", "COUNTTT"+count);
+			if (count>6)
+			{
 			spannable.setSpan(new ForegroundColorSpan(context.getResources()
 					.getColor(R.color.lightgreen)), matcher.start(), matcher
 					.end(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+			}
+			
 		}
-
+		
 		textView.setText(spannable);
 		textView.setMovementMethod(LinkMovementMethod.getInstance());
+		
+		
 
 	}
 

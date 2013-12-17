@@ -68,7 +68,7 @@
                     android:id="@+id/txtaddress2"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
+                    android:layout_marginLeft="17dp"
                     android:layout_weight=".8"
                     android:textColor="@color/white" />
             </LinearLayout>
@@ -91,7 +91,7 @@
                     android:id="@+id/txtphone"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="22dp"
                     android:layout_weight=".8"
                     android:textColor="@color/linkcolor" />
             </LinearLayout>
@@ -115,7 +115,7 @@
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"
                     android:layout_weight=".8"
-                     android:layout_marginLeft="15dp"
+                     android:layout_marginLeft="12dp"
                     android:textColor="@color/white" />
             </LinearLayout>
 

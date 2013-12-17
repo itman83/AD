@@ -221,7 +221,7 @@ public class AdsActivity extends TabbarActivity{
 							liArrayList.add(adDetailComponent);
 						}
 						Intent intent = new Intent(getApplicationContext(),
-								AdsDetailActivity.class);
+								CopyOfAdsDetailActivity.class);
 						//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						intent.putParcelableArrayListExtra("data", liArrayList);
 						intent.putExtra("ADS_ROW_PRESSED", position);

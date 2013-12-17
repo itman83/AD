@@ -139,8 +139,18 @@ public class ContactUsActivity extends TabbarActivity {
 
 			// Linkify.addLinks(txtele, Linkify.ALL);
 			// Linkify.addLinks(txtfax, Linkify.ALL);
-			Linkify.addLinks(txtmail, Linkify.ALL);
-			Linkify.addLinks(txtweb, Linkify.ALL);
+			txtmail.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					sendemail(txtmail.getText().toString());
+					
+				}
+			});
+			
+			//Linkify.addLinks(txtmail, Linkify.EMAIL_ADDRESSES);
+			Linkify.addLinks(txtweb, Linkify.WEB_URLS);
 			// //check for updation
 			// ArrayList<TermsOfUseModel> listLocalData = new
 			// ArrayList<TermsOfUseModel>();
@@ -209,9 +219,14 @@ public class ContactUsActivity extends TabbarActivity {
 			// Constant.MSG_CONTENT_NOT_AVAILABLE);
 		}
 	}
-
 	
+	public void sendemail(String email_id)
+	{
+		Intent intent = new Intent(Intent.ACTION_SEND);
+		intent.setType("text/html");
+		intent.putExtra(Intent.EXTRA_EMAIL, email_id);
 
-	
+		startActivity(Intent.createChooser(intent, "Send Email"));
+	}
 
 }
