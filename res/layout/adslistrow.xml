@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+     android:background="@drawable/row_bg">
+<RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp" >
+    <TextView
+        android:id="@+id/txttitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="6dp"
+        android:singleLine="true"
+        android:textColor="@color/linkcolor"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+     <ImageView
+            android:id="@+id/sharebutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+           android:layout_centerVertical="true"
+           android:layout_marginTop="5dp"
+           android:layout_marginRight="5dp"
+            android:src="@drawable/shareicon" />
+</RelativeLayout>
+   
+
+        <TextView
+            android:id="@+id/detailtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="3dp"
+            android:singleLine="true"
+            android:text="hghjj"
+            
+            
+            android:textColor="@color/white"
+            android:textSize="12sp" />
+
+       
+
+   
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="8dp" >
+
+             <TextView
+                android:id="@+id/txtnews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="sdfsdf"
+                android:textColor="@color/linkcolor"
+                android:textSize="12sp" />
+              
+            
+            <TextView
+                android:id="@+id/txtcityname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/txtnews"
+                android:text="sdfsdf"
+                android:textColor="@color/linkcolor"
+                android:textSize="12sp"/>
+
+           
+            <TextView
+                android:id="@+id/txtdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/txtcityname"
+                android:text="sdfsdf"
+                android:textColor="@color/linkcolor"
+                android:textSize="12sp" />
+
+        </RelativeLayout>
+
+
+</LinearLayout>

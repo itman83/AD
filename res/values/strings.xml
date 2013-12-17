@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="app_name">AD</string>
+    <string name="feedbackname">姓名*</string>
+<string-array name="Spinner_Content"><item>One</item>
+<item>Two</item>
+<item>Three</item>
+</string-array>
+<string name="no_result_found">对不起！没有找到你需要的信息</string>
+<string name="call">取消</string>
+<string name="cancel">确认</string>
+</resources>

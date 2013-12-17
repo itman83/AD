@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/mainbg" >
+
+    <RelativeLayout
+        android:id="@+id/topheader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@color/lightgray" >
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/logo" />
+
+        <LinearLayout
+            android:id="@+id/llSearchLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:layout_alignParentRight="false"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/edsearch"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/search_txt"
+                android:ems="10"
+                android:hint="这里总有你需要的"
+                android:paddingLeft="25dp"
+                android:singleLine="true"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id="@+id/searchicon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:src="@drawable/searchicon" />
+
+            
+            
+            <Button  android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/searchbutton"
+                  android:text="搜索"/>
+            
+        </LinearLayout>
+
+     
+
+          <RelativeLayout
+                          android:layout_below="@+id/llSearchLayout"
+              
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/breadcrumbbg"
+            android:gravity="center_vertical" >
+
+            <ImageView
+                android:id="@+id/iconbreadcrum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/categoryminiicon" />
+
+            <TextView
+                android:id="@+id/textcity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/iconbreadcrum"
+                android:textColor="@color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+                
+      
+    </RelativeLayout>
+
+</RelativeLayout>

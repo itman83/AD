@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="black">#000000</color>
+    <color name="white">#ffffff</color>
+    <color name="Light_Gray">#ababab</color>
+    <color name="Dark_Gray">#3e3e3e</color>
+    <color name="Orange">#f38921</color>
+    <color name="brown">#9d4f2d</color>
+    <color name="gold">#FFD700</color>
+    <color name="yellow">#FFFF00</color>
+    <color name="red">#FF0000</color>
+    <color name="GREEN">#008000</color>
+    <color name="BlackOpaque">#80000000</color>
+    <color name="cache_color_hint">#00000000</color>
+    <color name="orange_btn_color">#f3ae1b</color>
+    <color name="orange_btn_border">#bb6008</color>
+    <color name="dblue_btn_color">#133c5d</color>
+    <color name="dblue_btn_border">#2f6699</color>
+    <color name="blue_btn_color">#449def</color>
+    <color name="blue_btn_border">#2f6699</color>
+    <color name="colorpicker_color1">#ff9d9e9d</color>
+    <color name="colorpicker_color2">#ff5a5d5a</color>
+    <color name="colorpicker_color3">#ff747674</color>
+    <color name="colorpicker_color4">#80ffd300</color>
+    <color name="colorpicker_color5">#80ffb600</color>
+    <color name="colorpicker_color6">#a0ffcb00</color>
+    <color name="msg_gp_detail_list_color">#848484</color>
+    <color name="blue_dark">#2d4aad</color>
+    <color name="normal_Gray">#929292</color>
+    <color name="detailText_Gray">#a4a4a4</color>
+    <color name="blue_normal">#3663C7</color>
+    <color name="holiday_day_color">#505f9c</color>
+    <color name="calendar_date_color">#3ca4e2</color>
+    <color name="holiday_header_color">#3d3d3d</color>
+    <color name="light_yellow">#FFC67C</color>
+    <color name="dark_pink">#58225d</color>
+    <color name="selection_color">#42899A</color>
+    <color name="aboutusbuttonorange">#F1720B</color>
+    <color name="backgroundColor">#393939</color>
+    <color name="footerBarColor">#4F5153</color>
+    <color name="linkcolor">#44C0B5</color>
+
+</resources>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal" >
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_vertical|center_horizontal"
+    android:paddingBottom="14dp" >
+
+    <RelativeLayout
+        android:id="@+id/buttonbglayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:background="@drawable/buttonbgleft"
+        android:gravity="center_horizontal" >
+
+        <ImageView
+            android:id="@+id/rowimage"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_weight="0.1" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/buttonbglayoutright"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/buttonbglayout"
+        android:layout_weight="1"
+        android:background="@drawable/buttonbgright" >
+
+        <TextView
+            android:id="@+id/newstxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="Shanghai Daily"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imageButton1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/buttonyellowicon" />
+
+        <ImageView
+            android:id="@+id/saperatorimg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@drawable/buttonseperator" />
+
+    </RelativeLayout>
+</RelativeLayout>
+</RelativeLayout>
