@@ -35,6 +35,7 @@ public class AboutUsActivity extends TabbarActivity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.aboutus);
 		layout_aboutus.setBackgroundResource(R.drawable.menuselector);
+		///dasgbfnkl  dakbgflsn kbdsnf 
 		layout_img_aboutus.setBackgroundResource(R.drawable.aboutusiconactive);
 		getWindow().setSoftInputMode(
 				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
