@@ -3,23 +3,19 @@ package com.cnfa.Activity;
 
 import java.util.ArrayList;
 
-import com.cnfa.R;
-import com.cnfa.category.ViewPagerADsDetailAdapter;
-import com.cnfa.constant.Constant;
-import com.cnfa.model.ADDetailComponent;
-import com.cnfa.model.SearchAdsModel;
-import com.cnfa.tab.TabbarActivity;
-import com.cnfa.utility.Utility;
-
-import android.app.Activity;
-import android.app.ActionBar.LayoutParams;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
-import android.view.WindowManager;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
+
+import com.cnfa.R;
+import com.cnfa.category.ViewPagerADsDetailAdapter;
+import com.cnfa.model.ADDetailComponent;
+import com.cnfa.model.SearchAdsModel;
+import com.cnfa.tab.TabbarActivity;
 
 public class SearchAdsDetailActivity extends TabbarActivity
 {

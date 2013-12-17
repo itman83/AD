@@ -147,15 +147,14 @@
                     android:orientation="vertical" >
                 </LinearLayout>
 
-                <!--
-                     <TextView
+                
+                  <!--    <TextView
                     android:id="@+id/txtaboutus"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="About Us"
-                    android:textColor="@color/white"
-                    android:textSize="10sp" />
-                -->
+                     android:textColor="@color/white"
+                    android:textSize="10sp" /> -->
             </LinearLayout>
         </RelativeLayout>
     </LinearLayout>

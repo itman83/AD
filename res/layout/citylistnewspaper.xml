@@ -23,7 +23,7 @@
             android:id="@+id/searchbarlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:background="@color/lightgray"
             android:gravity="center_vertical|center_horizontal" >
@@ -88,7 +88,7 @@
         android:layout_height="36dp"
         android:layout_below="@id/topheader"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="0.5dp"
         android:background="@color/lightgray"
         android:gravity="right|center_vertical" >
 

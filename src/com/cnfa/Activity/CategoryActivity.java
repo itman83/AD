@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
-import android.app.ActionBar.LayoutParams;
+
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
