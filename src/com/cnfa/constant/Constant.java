@@ -53,7 +53,7 @@ public class Constant {
 	
 	public static String DB_PATH = "";
 	
-	
+	public static String CITY_ID="";
 	
 
 	public static final String URL_WEIBO = "http://e.weibo.com/3272098172/profile";

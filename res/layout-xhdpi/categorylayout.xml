@@ -7,12 +7,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:padding="8dp"
+   android:padding="8dp"
         android:orientation="vertical" >
 
         <RelativeLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical|center_horizontal"
             android:layout_marginBottom="20dp"
             android:background="@drawable/tablebg"
@@ -71,7 +71,7 @@
             <RelativeLayout
                 android:id="@+id/layoutlineVertical1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="318dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_toRightOf="@id/layoutelectronics"
@@ -132,7 +132,7 @@
             <RelativeLayout
                 android:id="@+id/layoutlineVertical2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="318dp"
                 android:layout_marginBottom="1dp"
                 android:layout_marginTop="1dp"
                 android:layout_toRightOf="@id/layouthome"

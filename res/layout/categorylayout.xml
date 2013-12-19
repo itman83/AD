@@ -73,7 +73,7 @@
             <RelativeLayout
                 android:id="@+id/layoutlineVertical1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="302dp"
                 android:layout_toRightOf="@id/layoutelectronics"
                 android:background="@drawable/verticalseperator" >
 
@@ -134,7 +134,7 @@
             <RelativeLayout
                 android:id="@+id/layoutlineVertical2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="302dp"
                 android:layout_toRightOf="@id/layouthome"
                 android:background="@drawable/verticalseperator" >
 

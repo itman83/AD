@@ -35,7 +35,7 @@ public class ActivitySpan extends ClickableSpan {
 
 	@Override
 	public void onClick(View v) {
-		if (keyword.length()>6)
+		if (keyword.length()>=11 )
 		{
 
 		TextView phoneTextView;

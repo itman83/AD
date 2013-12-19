@@ -223,7 +223,7 @@ public class ContactUsActivity extends TabbarActivity {
 	public void sendemail(String email_id)
 	{
 		Intent intent = new Intent(Intent.ACTION_SEND);
-		intent.setType("text/html");
+		intent.setType("message/rfc822");
 		intent.putExtra(Intent.EXTRA_EMAIL, email_id);
 
 		startActivity(Intent.createChooser(intent, "Send Email"));

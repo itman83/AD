@@ -112,6 +112,7 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 
 		_cityId = getIntent().getStringExtra("cityid");
 		_cityName = getIntent().getStringExtra("cityname");
+		Constant.CITY_ID=_cityId;
 
 		if (_cityName != null)
 			txtCity.setText( _cityName); 
@@ -567,6 +568,7 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 					CategoryActivity.class);
 			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 			/*intent.putExtra("categorydata", categoryArraylist);*/
+			
 			intent.putExtra("cityname", _cityName);
 			intent.putExtra("newspapername", _newsPaper);
 			intent.putExtra("newspaperid", _id);

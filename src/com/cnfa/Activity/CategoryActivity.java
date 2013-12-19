@@ -47,6 +47,7 @@ public class CategoryActivity extends TabbarActivity{
 	  String className=null;
 	private TextView txtCity;
 	String activity_source_name=null;
+
 		public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState,R.layout.category);
 	       // setContentView(R.layout.citylist);   
@@ -68,6 +69,7 @@ public class CategoryActivity extends TabbarActivity{
 			 _newspaperName = getIntent().getStringExtra("newspapername"); 
 			 _id = getIntent().getStringExtra("newspaperid"); 
 			 cityName = getIntent().getStringExtra("cityname");
+			 
 			 if(_newspaperName!=null){
 				 if(cityName != null){
 				//txtCity.setText(cityName +">>"+_newspaperName);
@@ -330,6 +332,7 @@ public class CategoryActivity extends TabbarActivity{
 						SearchAdsActivity.class);
 				//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 				intent.putExtra("searchads", searchAdsArraylist);
+			
 				//intent.putExtra("adstitle", "test");
 				startActivity(intent);
 				overridePendingTransition(R.anim.slide_in_left,

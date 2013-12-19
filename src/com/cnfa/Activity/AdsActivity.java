@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -319,7 +320,8 @@ public class AdsActivity extends TabbarActivity{
 
 			@Override
 			protected String doInBackground(String... params) {
-				InputStream in = HttpConnection.connect(_url+_searchstring);
+				InputStream in = HttpConnection.connect(_url+_searchstring+"city_id="+Constant.CITY_ID);
+				Log.d("CHECKK", "CHECKK"+_searchstring+"///"+Constant.CITY_ID);
 				String res = null;
 				if (in != null) {
 					res = Utility.getString(in);

@@ -7,7 +7,7 @@
     <LinearLayout
         android:id="@+id/topheader"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
+        android:layout_height="wrap_content"
         android:background="@color/lightgray"
         android:gravity="center_vertical|center_horizontal"
         android:orientation="vertical" >
@@ -24,8 +24,8 @@
             android:id="@+id/searchbarlayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginTop="1dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="10dp"
             android:background="@color/lightgray"
             android:gravity="center_horizontal"
             android:orientation="vertical" >
@@ -33,7 +33,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+              
                 android:background="@drawable/breadcrumbbg"
                 android:gravity="center_vertical" >
 

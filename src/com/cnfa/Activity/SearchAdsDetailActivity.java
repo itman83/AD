@@ -16,6 +16,8 @@ import com.cnfa.category.ViewPagerADsDetailAdapter;
 import com.cnfa.model.ADDetailComponent;
 import com.cnfa.model.SearchAdsModel;
 import com.cnfa.tab.TabbarActivity;
+import com.viewpagerindicator.CirclePageIndicator;
+import com.viewpagerindicator.PageIndicator;
 
 public class SearchAdsDetailActivity extends TabbarActivity
 {
@@ -26,7 +28,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 	int totalPagesInPager = 1;
 	int adsPosition = 0;
 	ScrollView dotsScrollView;
-	private LinearLayout layout_dots;
+	//private LinearLayout layout_dots;
 	private ViewPagerADsDetailAdapter mAdapter;
 	private ViewPager mPager;
 	ArrayList<ADDetailComponent> list = new ArrayList<ADDetailComponent>();
@@ -41,12 +43,13 @@ public class SearchAdsDetailActivity extends TabbarActivity
 	int preRegion = region1;
 	boolean isRegionChange = false;
 	int region = 2;
+	 PageIndicator mIndicator;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView( R.layout.adslistdetail);
+		setContentView( R.layout.copy_of_adslistdetail);
 //		getWindow().setSoftInputMode(
 //				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 //		Constant.FAV_SCREEN=2;
@@ -79,7 +82,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 					ImageView imgview = new ImageView(getApplicationContext());
 					imgview.setBackgroundResource(R.drawable.selectdots);
 					layoutParams.setMargins(0, 0, 10, 0);
-					layout_dots.addView(imgview, i, layoutParams);
+					//layout_dots.addView(imgview, i, layoutParams);
 
 				} else {
 					LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -88,7 +91,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 					ImageView imgview = new ImageView(getApplicationContext());
 					imgview.setBackgroundResource(R.drawable.dots);
 					layoutParams.setMargins(0, 0, 10, 0);
-					layout_dots.addView(imgview, i, layoutParams);
+					//layout_dots.addView(imgview, i, layoutParams);
 				}
 
 			}
@@ -104,7 +107,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 					ImageView imgview = new ImageView(getApplicationContext());
 					imgview.setBackgroundResource(R.drawable.selectdots);
 					layoutParams.setMargins(0, 0, 10, 0);
-					layout_dots.addView(imgview, i, layoutParams);
+					//layout_dots.addView(imgview, i, layoutParams);
 
 				} else {
 					LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
@@ -113,7 +116,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 					ImageView imgview = new ImageView(getApplicationContext());
 					imgview.setBackgroundResource(R.drawable.dots);
 					layoutParams.setMargins(0, 0, 10, 0);
-					layout_dots.addView(imgview, i, layoutParams);
+					//layout_dots.addView(imgview, i, layoutParams);
 				}
 
 			}
@@ -123,7 +126,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 	}
 
 	private void loadGridView(ArrayList<ADDetailComponent> categoryListtemp) {
-		layout_dots = (LinearLayout) findViewById(R.id.dots_layout);
+		//layout_dots = (LinearLayout) findViewById(R.id.dots_layout);
 
 		mAdapter = new ViewPagerADsDetailAdapter(getSupportFragmentManager(),
 				SearchAdsDetailActivity.this, list, bottomtext, pageCurrent);
@@ -131,6 +134,9 @@ public class SearchAdsDetailActivity extends TabbarActivity
 
 		mPager.setAdapter(mAdapter);
 		mPager.setCurrentItem(pageCurrent);
+		
+		 mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+	     mIndicator.setViewPager(mPager);
 
 		totalPagesInPager = categoryListtemp.size();
 		if (pageCurrent < totalPagesInPager / 10 * 10) {
@@ -141,7 +147,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 		addDots(pageCurrent % 10, region);
 		
 
-		mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+/*		mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrolled(int position, float positionOffset,
 					int positionOffsetPixels) {
@@ -149,11 +155,11 @@ public class SearchAdsDetailActivity extends TabbarActivity
 				int pos = position;
 				if (pos < totalPagesInPager / 10 * 10) {
 					
-					layout_dots.removeAllViews();
+					//layout_dots.removeAllViews();
 					addDots(pos % 10, region1);
 				} else {
 					
-					layout_dots.removeAllViews();
+					//layout_dots.removeAllViews();
 					addDots(pos % 10, region2);
 				}
 
@@ -164,53 +170,6 @@ public class SearchAdsDetailActivity extends TabbarActivity
 			@Override
 			public void onPageSelected(int position) {
 
-				// System.out.println("position=" + position);
-//				int pos = 0;
-//				// if (position >= 20) {
-//				// pos = position - 10 * 2;
-//				// } else if (position >= 10) {
-//				// pos = position - 10;
-//				// } else {
-//				// pos = position;
-//				// }
-//				if (pos < totalPagesInPager / 10 * 10
-//						&& totalPagesInPager / 10 == 0)
-//					region = region1;
-//				else
-//					region = region2;
-//				switch (region) {
-//				case 1:
-//					for (int i = 0; i < 9; i++) {
-//
-//						if (i == pos % 10) {
-//							layout_dots.getChildAt(i).setBackgroundResource(
-//									R.drawable.selectdots);
-//
-//						} else {
-//							layout_dots.getChildAt(i).setBackgroundResource(
-//									R.drawable.dots);
-//
-//						}
-//
-//					}
-//					break;
-//
-//				case 2:
-//					for (int i = 0; i < totalPagesInPager % 10; i++) {
-//
-//						if (i == pos) {
-//							layout_dots.getChildAt(i).setBackgroundResource(
-//									R.drawable.selectdots);
-//
-//						} else {
-//							layout_dots.getChildAt(i).setBackgroundResource(
-//									R.drawable.dots);
-//
-//						}
-//
-//					}
-//					break;
-//				}
 
 			}
 
@@ -218,7 +177,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 			public void onPageScrollStateChanged(int state) {
 			
 			}
-		});
+		});*/
 
 	}
 }

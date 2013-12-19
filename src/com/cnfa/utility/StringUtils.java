@@ -13,7 +13,6 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.URLSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -42,7 +41,7 @@ public class StringUtils {
 					Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 			int count = matcher.end()-matcher.start();
 			//Log.d("COUNTTT", "COUNTTT"+count);
-			if (count>6)
+			if (count>=11)
 			{
 			spannable.setSpan(new ForegroundColorSpan(context.getResources()
 					.getColor(R.color.lightgreen)), matcher.start(), matcher
