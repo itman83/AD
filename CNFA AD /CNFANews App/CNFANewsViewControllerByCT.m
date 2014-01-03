@@ -265,7 +265,7 @@ BOOL navbackbool;
     [categorybg_image release];
 #pragma Category ImageView
     UIImageView *category_img = [[UIImageView alloc] init];
-    category_img.frame=CGRectMake(8.25,8.5, 303.5,21.5);
+    category_img.frame=CGRectMake(14,8.5, 290,21.5);
     [category_img setImage:[UIImage imageNamed:@"category-select.png"]];
     category_img.userInteractionEnabled=TRUE;
     category_img.opaque = YES;
@@ -290,16 +290,16 @@ BOOL navbackbool;
     
     if(IS_IPHONE){
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-             tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20+20+20, 281.5, 370-40) style:UITableViewStyleGrouped];
+             tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20+20+20, 292, 370-40) style:UITableViewStyleGrouped];
         } else {
-             tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20+20, 281.5, 370-40) style:UITableViewStyleGrouped];
+             tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20+20, 292, 370-40) style:UITableViewStyleGrouped];
         }
        }
     else{
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,126+20+20, 281.5, 316-80) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,126+20+20, 292, 316-80) style:UITableViewStyleGrouped];
         } else {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,126+20, 281.5, 316-80) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,126+20, 292, 316-80) style:UITableViewStyleGrouped];
         }
         
     }
@@ -687,7 +687,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
 #pragma Cell Image  next arrow View Divder
     UIImageView *cellnextarrow_img = [[UIImageView alloc] init];
-    cellnextarrow_img.frame=CGRectMake(233,3.5,33.5,33);
+    cellnextarrow_img.frame=CGRectMake(253,3.5,33.5,33);
     [cellnextarrow_img setImage:[UIImage imageNamed:@"next-arrow.png"]];
     cellnextarrow_img.userInteractionEnabled=TRUE;
     cellnextarrow_img.opaque = YES;

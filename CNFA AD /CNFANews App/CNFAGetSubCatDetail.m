@@ -7,28 +7,29 @@
 //
 
 #import "CNFAGetSubCatDetail.h"
-
+#import "CNFAGlobalDataClass.h"
 @implementation CNFAGetSubCatDetail
 
 @synthesize delegate;
 -(void)callWebService:(NSString *)CatID{
     //	NSLog(@"callWebService fn caalled");
+    CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
 	NSString * soapMessage = [NSString stringWithFormat:
                               @"<?xml version=\"1.0\" encoding=\"utf-8\"?>"
                               "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">"
                               "<soap:Body>"
-                              "<MediaMenu xmlns=\"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@/\" />"
+                              "<MediaMenu xmlns=\"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@&cityid=%@/\" />"
                               "</soap:Body>"
-                              "</soap:Envelope>",CatID];
+                              "</soap:Envelope>",CatID,obj.cityId];
 	
     
-    NSURL *  url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@",CatID]];
+    NSURL *  url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@&cityid=%@",CatID,obj.cityId]];
     
     NSLog(@"URL %@",url);
     
     NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
    	[theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-	[theRequest addValue: [NSString stringWithFormat:@"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@",CatID]forHTTPHeaderField:@"SOAPAction"];
+	[theRequest addValue: [NSString stringWithFormat:@"http://www.cnfanads.com/webservices/index.php?action=findads&category_id=%@cityid=%@",CatID,obj.cityId]forHTTPHeaderField:@"SOAPAction"];
 	[theRequest addValue: [NSString stringWithFormat:@"%d",[soapMessage length]] forHTTPHeaderField:@"Content-Length"];
 	[theRequest setHTTPMethod:@"POST"];
 	[theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
@@ -70,6 +71,8 @@
     [localcreatedTime release];
      [localAdddescCityName release];
      [localaddescNewsName release];
+//    CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
+//    [obj setCityId:@""];
 }
 
 

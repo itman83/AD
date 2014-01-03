@@ -16,6 +16,8 @@
 }
 
 @property (nonatomic, retain) NSString      *lognDone;
+@property (nonatomic, retain) NSString      *cityId;
+@property (nonatomic, retain) NSString      *cityId1;
 @property (nonatomic, retain) NSIndexPath  *indPath;
 +(CNFAGlobalDataClass*)getInstance;
 -(NSString*) networkAvailable;

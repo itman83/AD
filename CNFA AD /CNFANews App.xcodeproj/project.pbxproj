@@ -203,7 +203,6 @@
 		DF242D04181A841800AA43AC /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
 		DF242ED6181A93BB00AA43AC /* CNFAGlobalDataClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNFAGlobalDataClass.h; sourceTree = "<group>"; };
 		DF242ED7181A93BB00AA43AC /* CNFAGlobalDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CNFAGlobalDataClass.m; sourceTree = "<group>"; };
-		DF242FB6181A9EEA00AA43AC /* libWeiboSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libWeiboSDK.a; path = "../../../Downloads/TCWeiBoSDKDemo 2/TCWeiBoSDKDemo/TCWeiBoSDK/SSO/libWeiboSDK.a"; sourceTree = "<group>"; };
 		DF242FB8181A9F6F00AA43AC /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		DF2D2E021782A6BD00A2F895 /* Add_NewsDB.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = Add_NewsDB.sqlite; sourceTree = SOURCE_ROOT; };
 		DF2D2E041782AAE500A2F895 /* CNFAGetNewsTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CNFAGetNewsTitle.h; sourceTree = "<group>"; };
@@ -492,7 +491,6 @@
 				DF34E060181E17E300FD4EC8 /* CoreText.framework */,
 				DF34E05E181E179800FD4EC8 /* CoreLocation.framework */,
 				DF242FB8181A9F6F00AA43AC /* libicucore.dylib */,
-				DF242FB6181A9EEA00AA43AC /* libWeiboSDK.a */,
 				DF1070D1179E71B900440043 /* We Chat */,
 				DF3B85891781693500BC23CB /* libsqlite3.0.dylib */,
 				DF3B858A1781693500BC23CB /* libsqlite3.dylib */,
@@ -1211,7 +1209,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "764E0738-84CA-409A-B7EF-EF5EFE9CCED0";
+				PROVISIONING_PROFILE = "47E0481B-6852-4778-849A-1CA8D88C50C7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1238,7 +1236,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "764E0738-84CA-409A-B7EF-EF5EFE9CCED0";
+				PROVISIONING_PROFILE = "47E0481B-6852-4778-849A-1CA8D88C50C7";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
@@ -1260,7 +1258,7 @@
 					"/Users/Dex/Desktop/CNFA\\ AD\\ /TCWeiBoSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "764E0738-84CA-409A-B7EF-EF5EFE9CCED0";
+				PROVISIONING_PROFILE = "47E0481B-6852-4778-849A-1CA8D88C50C7";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -1281,7 +1279,7 @@
 					"/Users/Dex/Desktop/CNFA\\ AD\\ /TCWeiBoSDK",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "764E0738-84CA-409A-B7EF-EF5EFE9CCED0";
+				PROVISIONING_PROFILE = "47E0481B-6852-4778-849A-1CA8D88C50C7";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

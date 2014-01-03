@@ -9,7 +9,7 @@
 #import "CNFAGlobalDataClass.h"
 
 @implementation CNFAGlobalDataClass
-@synthesize lognDone,indPath;
+@synthesize lognDone,indPath,cityId,cityId1;
 static CNFAGlobalDataClass *instance =nil;
 +(CNFAGlobalDataClass *)getInstance
 {

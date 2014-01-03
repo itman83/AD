@@ -13,6 +13,7 @@
 #import <UIKit/UIKit.h>
 #import "CNFAGetNewsTitle.h"
 #import "CNFACategoryNewsViewController.h"
+#import "CNFAGlobalDataClass.h"
 @interface CNFANewsViewController : UIViewController<GetNewsListDelegate,UITextFieldDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UISearchDisplayDelegate>{
 
     Reachability * reachability ;
