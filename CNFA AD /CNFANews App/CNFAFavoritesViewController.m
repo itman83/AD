@@ -84,9 +84,7 @@
     back_btn =[UIButton buttonWithType:UIButtonTypeCustom];
     back_btn.frame=CGRectMake(5,5.5,49.5,29);
     [back_btn setBackgroundImage:[UIImage imageWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"back-button" ofType:@"png"]] forState:UIControlStateNormal];
-//    back_btn.titleLabel.font=[UIFont fontWithName:@"ZhunYuan" size:13.0f];
-//    [back_btn setTitle:@"  返回" forState:UIControlStateNormal];
-//    [back_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+
     back_btn.hidden=TRUE;
     [back_btn addTarget:self action:@selector(back_btnActionmainNews) forControlEvents:UIControlEventTouchUpInside];
     [navbarimage addSubview:back_btn];
@@ -94,17 +92,7 @@
     
     
     
-#pragma Navigation Bar Title
-//    UILabel *navbartitle=[[UILabel alloc] init];
-//    navbartitle.frame=CGRectMake(0,2.5,320,34);
-//    //navbartitle.text=[NSString stringWithFormat:@"Favourite"];
-//    navbartitle.text=[NSString stringWithFormat:@"收藏"];
-//    navbartitle.textAlignment=1;
-//    navbartitle.textColor= [UIColor whiteColor];
-//    navbartitle.backgroundColor=[UIColor clearColor];
-//    navbartitle.font=[UIFont fontWithName:@"ZhunYuan" size:18];
-//    [navbarimage addSubview:navbartitle];
-//    [navbartitle release];
+
     
     
 #pragma Search Bar BackGround ImageView
@@ -121,30 +109,7 @@
     [mainbg_img addSubview:searchbg_image];
     [searchbg_image release];
 
-////#pragma Search Bar BackGround ImageView
-//    UIImageView *companylogo = [[UIImageView alloc] init];
-//    companylogo.frame=CGRectMake(5,16,52,9);
-//    [companylogo setImage:[UIImage imageNamed:@"companyName.png"]];
-//    companylogo.userInteractionEnabled=TRUE;
-//    companylogo.opaque = YES;
-//    companylogo.layer.cornerRadius=18.0f;
-//    [searchbg_image addSubview:companylogo];
-//    [companylogo release];
 
-    
-#pragma Navigation Bar Title
-//    UILabel * companynamelbl=[[UILabel alloc] init];
-//    companynamelbl.frame=CGRectMake(2.2,11,80,18);
-//    //companynamelbl=[NSString stringWithFormat:@"China News Digest"];
-//    companynamelbl.text=[NSString stringWithFormat:@"报纸分类广告"];
-//    companynamelbl.textAlignment=0;
-//    companynamelbl.textColor= [UIColor whiteColor];
-//    companynamelbl.backgroundColor=[UIColor clearColor];
-//    companynamelbl.font=[UIFont fontWithName:@"ZhunYuan" size:9];
-//    companynamelbl.shadowColor = [UIColor grayColor];
-//    companynamelbl.shadowOffset = CGSizeMake(0,0);
-//    [searchbg_image addSubview:companynamelbl];
-//    [companynamelbl release];
   
     
     UIImageView *search_img = [[UIImageView alloc] init];
@@ -209,19 +174,7 @@
     [searchbg_image addSubview:searchbtn];
     
     
-    
-#pragma Buttom Bar ImageView
-//    UIImageView *midbg_img = [[UIImageView alloc] init];
-//    if(IS_IPHONE_5){midbg_img.frame=CGRectMake(14,95,292,397);}
-//    else{
-//        midbg_img.frame=CGRectMake(14,95,292,307);}
-//    [midbg_img setImage:[UIImage imageNamed:@"bg-midd.png"]];
-//    midbg_img.userInteractionEnabled=TRUE;
-//    midbg_img.opaque = YES;
-//    midbg_img.layer.masksToBounds = YES;
-//    midbg_img.layer.cornerRadius = 10;
-//    [mainbg_img addSubview:midbg_img];
-//    [midbg_img release];
+ 
     
     UIImageView *midbg_img = [[UIImageView alloc] init];
     
@@ -281,15 +234,7 @@
     [tableview addSubview:noresult_lbl];
     [noresult_lbl setHidden:YES];
     [noresult_lbl release];
-//    navrightbtn =[UIButton buttonWithType:UIButtonTypeRoundedRect];
-//    navrightbtn.frame=CGRectMake(260,9,46,29.5);
-//    [navrightbtn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"edit.png"]] forState:UIControlStateNormal];
-//     navrightbtn.tag=1111;
-//    navrightbtn.titleLabel.font=[UIFont systemFontOfSize:13.0f];
-//    [navrightbtn setTitle:@"编辑" forState:UIControlStateNormal];
-//    [navrightbtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//    [navrightbtn addTarget:self action:@selector(Reddy:) forControlEvents:UIControlEventTouchUpInside];
-//    [navbarimage addSubview:navrightbtn];
+
 
     [self FetchRecord_NewsTitle_DB];
 	// Do any additional setup after loading the view.
@@ -564,15 +509,6 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [super setEditing:YES animated:YES];
         [tableview setEditing:NO animated:YES];
         [tableview reloadData];
-       
-//        [navrightbtn setTitle:@"完成" forState:UIControlStateNormal];
-//        UISwipeGestureRecognizer *swipeDelete = [[UISwipeGestureRecognizer alloc]     initWithTarget:self action:@selector(handleSwipeDelete:)];
-//        [swipeDelete setDirection: UISwipeGestureRecognizerDirectionLeft];
-//        [tableview addGestureRecognizer:swipeDelete];
-//        UIPanGestureRecognizer* recognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleSwipeDelete:)];
-//         recognizer.delegate = self;
-//        
-//		[tableview addGestureRecognizer:recognizer];
         
  
      }

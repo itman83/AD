@@ -611,7 +611,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     cell1=(CNFANewsCell *)[tableview dequeueReusableCellWithIdentifier:Nil];
     if (cell1==nil) {
         
-        cell1=[[[CNFANewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier]autorelease];}
+        cell1=[[[CNFANewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier]autorelease];
+    }
         cell1.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"row-bg.png"]] autorelease];
         cell1.selectionStyle=UITableViewCellSeparatorStyleNone;
     

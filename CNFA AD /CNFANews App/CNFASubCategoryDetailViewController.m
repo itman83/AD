@@ -878,8 +878,8 @@
             
             self.uiasView.frame = uiasViewFrame;
         }];
-
-}
+        
+    }
 }
 -(void)dismiss_btn:(id)sender
 {
