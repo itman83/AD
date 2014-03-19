@@ -114,7 +114,10 @@
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
  	  
     if( [elementName caseInsensitiveCompare:@"id"] == NSOrderedSame)
+    {
+        NSLog(@"currentData ------>%@",currentData);
 		[localcatID addObject:currentData];
+    }
     else if( [elementName caseInsensitiveCompare:@"image"] == NSOrderedSame)
     	[localcatimageName addObject:currentData];
     else if( [elementName caseInsensitiveCompare:@"logo"] == NSOrderedSame)

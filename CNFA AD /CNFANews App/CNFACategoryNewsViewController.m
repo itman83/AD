@@ -263,7 +263,7 @@
     [categorybg_image release];
 #pragma Category ImageView
     UIImageView *category_img = [[UIImageView alloc] init];
-    category_img.frame=CGRectMake(8.25,8.5, 303.5,21.5);
+    category_img.frame=CGRectMake(14,8.5, 292,21.5);
     [category_img setImage:[UIImage imageNamed:@"category-select.png"]];
     category_img.userInteractionEnabled=TRUE;
     category_img.opaque = YES;

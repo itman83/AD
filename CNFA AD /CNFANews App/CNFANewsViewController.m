@@ -246,21 +246,21 @@ BOOL navbackbool;
     {
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20, 281.5, 365) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20, 292, 365) style:UITableViewStyleGrouped];
         } else
         {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106, 281.5, 370) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106, 292, 370) style:UITableViewStyleGrouped];
         }
     }
     else
     {
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20, 281.5, 316-30) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20, 292, 316-30) style:UITableViewStyleGrouped];
         }
         else
         {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106, 281.5, 316-30) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106, 292, 316-30) style:UITableViewStyleGrouped];
             
         }
     }
@@ -294,7 +294,8 @@ BOOL navbackbool;
     tempindbg.hidden=FALSE;
     [spinner startAnimating];
     
-
+        CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
+        [obj setCityId:@""];
     //Sql query selected Timestamp
     
 //   
@@ -610,7 +611,8 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     cell1=(CNFANewsCell *)[tableview dequeueReusableCellWithIdentifier:Nil];
     if (cell1==nil) {
         
-        cell1=[[[CNFANewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier]autorelease];}
+        cell1=[[[CNFANewsCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier]autorelease];
+    }
         cell1.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"row-bg.png"]] autorelease];
         cell1.selectionStyle=UITableViewCellSeparatorStyleNone;
     
@@ -659,7 +661,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     
    #pragma Cell Image  next arrow View Divder
         UIImageView *cellnextarrow_img = [[UIImageView alloc] init];
-        cellnextarrow_img.frame=CGRectMake(233,3.5,33.5,33);
+        cellnextarrow_img.frame=CGRectMake(253,3.5,33.5,33);
         [cellnextarrow_img setImage:[UIImage imageNamed:@"next-arrow.png"]];
         cellnextarrow_img.userInteractionEnabled=TRUE;
         cellnextarrow_img.opaque = YES;

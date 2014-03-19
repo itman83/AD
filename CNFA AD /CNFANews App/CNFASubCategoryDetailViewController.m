@@ -128,7 +128,7 @@
     [searchbg_image release];
     
     UIImageView *category_img = [[UIImageView alloc] init];
-    category_img.frame=CGRectMake(8.25,8.5, 303.5,21.5);
+    category_img.frame=CGRectMake(14,8.5, 292,21.5);
     [category_img setImage:[UIImage imageNamed:@"category-select.png"]];
     category_img.userInteractionEnabled=TRUE;
     category_img.opaque = YES;
@@ -138,7 +138,7 @@
 #pragma CITY Label
     
     UILabel *city_lbl=[[UILabel alloc] init];
-    city_lbl.frame=CGRectMake(18,0,303,21);
+    city_lbl.frame=CGRectMake(18,0,290,21);
     city_lbl.textAlignment=0;
     
     
@@ -878,8 +878,8 @@
             
             self.uiasView.frame = uiasViewFrame;
         }];
-
-}
+        
+    }
 }
 -(void)dismiss_btn:(id)sender
 {

@@ -13,6 +13,7 @@
 #import "CNFAGetCatListByNewsandCity.h"
 #import <sqlite3.h>
 #import "Reachability.h"
+#import "CNFAGlobalDataClass.h"
 @interface CNFANewsDigestViewController : UIViewController<GetNewsCatListDelegate,GetCityCatListDelegate,UISearchBarDelegate,UIScrollViewDelegate,UITabBarDelegate,UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>{
      
     UITextField * searchbar_Txt;

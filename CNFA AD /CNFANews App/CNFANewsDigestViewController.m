@@ -493,7 +493,11 @@ BOOL navbackbool;
    // NewscityId=[cityId mutableCopy];
   //  NewscityName=[cityName mutableCopy];
    // NewscityTimeStamp=[cityTimeStamp mutableCopy];
- 
+    NSLog(@"Newsimage_Name------>%@",Newsimage_Name);
+    NSLog(@"fetNewscityTimeStamp------>%@",fetNewscityTimeStamp);
+     NSLog(@"NewsCatUpdateTime------>%@",NewsCatUpdateTime);
+     NSLog(@"NewsCatARTICLES------>%@",Newscategory_id);
+    
     if([fetNewscityTimeStamp isEqualToArray:NewsCatUpdateTime]){
          NSLog(@"Match array");
          [self FetchRecord_NewsTitle_DB];
@@ -585,6 +589,10 @@ BOOL navbackbool;
             [fetNewsNewsID addObject:NewsPaper_ID];
             
             [fetNewsupdate_time addObject:CatUpdate_Time];
+            
+            NSLog(@"fetNewsimage_Name %@",fetNewsimage_Name);
+            
+            
          }
         
         sqlite3_finalize(countstatement);
@@ -848,11 +856,16 @@ BOOL navbackbool;
     [subcat setCityIDstr:CityID];
     if ([fromTab isEqualToString:@"City"]) {
         
+        CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
+        [obj setCityId:obj.cityId1];
         [subcat setFromTab1:@"City"];
         [subcat setCityName:CityName];
     }
     else if ([fromTab isEqualToString:@"Newspaper"])
     {
+        CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
+        [obj setCityId:@""];
+        
         [subcat setFromTab1:@"Newspaper"];
     }
     

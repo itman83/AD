@@ -8,6 +8,8 @@
 
 #import "CNFACityViewController.h"
 #import "CNFACategoryCell.h"
+#import "CNFAGlobalDataClass.h"
+
 #define REFRESH_HEADER_HEIGHT 52.0f
 #define IS_IPHONE ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
 #define SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
@@ -232,17 +234,17 @@
     {
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
         {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20, 281.5, 370) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20, 292, 370) style:UITableViewStyleGrouped];
         } else {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106, 281.5, 370) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106, 292, 370) style:UITableViewStyleGrouped];
         }
     }
     else
     {
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0")) {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106+20, 281.5, 316-30) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106+20, 292, 316-30) style:UITableViewStyleGrouped];
         } else {
-            tableview=[[UITableView alloc]initWithFrame:CGRectMake(19.25,106, 281.5, 316-30) style:UITableViewStyleGrouped];
+            tableview=[[UITableView alloc]initWithFrame:CGRectMake(14,106, 292, 316-30) style:UITableViewStyleGrouped];
         }
     
     }
@@ -527,7 +529,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
          
 #pragma Cell Image  next arrow View Divder
         UIImageView *cellnextarrow_img = [[UIImageView alloc] init];
-        cellnextarrow_img.frame=CGRectMake(233,3.5,33.5,33);
+        cellnextarrow_img.frame=CGRectMake(253,3.5,33.5,33);
         [cellnextarrow_img setImage:[UIImage imageNamed:@"next-arrow.png"]];
         cellnextarrow_img.userInteractionEnabled=TRUE;
         cellnextarrow_img.opaque = YES;
@@ -550,6 +552,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     
+    CNFAGlobalDataClass *obj=[CNFAGlobalDataClass getInstance];
+    [obj setCityId:[fetchnCityIDarr objectAtIndex:indexPath.section]];
+    [obj setCityId1:[fetchnCityIDarr objectAtIndex:indexPath.section]];
+    NSLog(@"city id is-------------------> %@",obj.cityId);
      CNFANewsViewControllerByCT *gotocatogery_Cls=[[CNFANewsViewControllerByCT alloc]init];
     //[gotocatogery_Cls setKeystr:@"Back"];
     //[gotocatogery_Cls setCityId:[fetchnCityIDarr objectAtIndex:<#(NSUInteger)#>]];
@@ -561,7 +567,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         [gotocatogery_Cls setCityId:[fetchnCityIDarr objectAtIndex:indexPath.section]];
     }
     
-      [self.navigationController pushViewController:gotocatogery_Cls animated:YES];
+    [self.navigationController pushViewController:gotocatogery_Cls animated:YES];
     [gotocatogery_Cls release];
     
 }
