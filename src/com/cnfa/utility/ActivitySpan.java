@@ -73,8 +73,9 @@ public class ActivitySpan extends ClickableSpan {
 //			linearLayout.addView(btnCancel, btnCancellayout);
 //			linearLayout.addView(btnCall, btnCalllayout);
 //		} else {
-			linearLayout.addView(btnCall, btnCalllayout);
 			linearLayout.addView(btnCancel, btnCancellayout);
+			linearLayout.addView(btnCall, btnCalllayout);
+			
 
 //		}
 

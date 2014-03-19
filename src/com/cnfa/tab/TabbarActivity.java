@@ -10,18 +10,9 @@ import android.widget.RelativeLayout;
 
 import com.cnfa.R;
 import com.cnfa.Activity.AboutUsActivity;
-import com.cnfa.Activity.AdsActivity;
-import com.cnfa.Activity.AdsDetailActivity;
-import com.cnfa.Activity.CategoryActivity;
 import com.cnfa.Activity.CityListActivity;
-import com.cnfa.Activity.CityListToNewspaperActivity;
-import com.cnfa.Activity.ContactUsActivity;
 import com.cnfa.Activity.FavoriteAdsActivity;
-import com.cnfa.Activity.FeedbackActivity;
 import com.cnfa.Activity.NewspaperActivity;
-import com.cnfa.Activity.PrivacyActivity;
-import com.cnfa.Activity.TermsOfUseActivity;
-import com.cnfa.constant.Constant;
 
 /**
  * @author Sidharth
@@ -75,7 +66,9 @@ public class TabbarActivity extends FragmentActivity {
 					Intent i = new Intent(getApplicationContext(),
 							NewspaperActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(i);
+					finish();
 //				} else if (Constant.NEWS_SCREEN == 2) {
 //					Intent i = new Intent(getApplicationContext(),
 //							CategoryActivity.class);
@@ -107,7 +100,9 @@ public class TabbarActivity extends FragmentActivity {
 					Intent i = new Intent(getApplicationContext(),
 							CityListActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(i);
+					finish();
 //				} else if (Constant.CITY_SCREEN == 2) {
 //					Intent i = new Intent(getApplicationContext(),
 //							CityListToNewspaperActivity.class);
@@ -146,7 +141,9 @@ public class TabbarActivity extends FragmentActivity {
 					Intent i = new Intent(getApplicationContext(),
 							FavoriteAdsActivity.class);
 					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(i);
+					finish();
 //				} else if (Constant.FAV_SCREEN == 2) {
 //					Intent i = new Intent(getApplicationContext(),
 //							AdsDetailActivity.class);
@@ -168,8 +165,10 @@ public class TabbarActivity extends FragmentActivity {
 //				if (Constant.INFO_SCREEN == 1) {
 					Intent i = new Intent(getApplicationContext(),
 							AboutUsActivity.class);
-					//i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(i);
+					finish();
 //				} else if (Constant.INFO_SCREEN == 2) {
 //					Intent i = new Intent(getApplicationContext(),
 //							FeedbackActivity.class);
@@ -199,6 +198,9 @@ public class TabbarActivity extends FragmentActivity {
 		});
 
 	}
+	
+	
+	
 	
 
 }

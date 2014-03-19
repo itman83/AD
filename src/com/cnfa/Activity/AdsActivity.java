@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class AdsActivity extends TabbarActivity{
 	String activity_source_name=null;
 	DisplayMetrics metrics;
 	private String cityName;
+	Context c;
 	@SuppressWarnings({ "deprecation", "unchecked" })
 		public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState,R.layout.adslist);
@@ -118,6 +120,7 @@ public class AdsActivity extends TabbarActivity{
 
 	 }  
 	 
+	
 	 
 		public class MySearchListAdapter extends BaseAdapter {
 			private final Activity context;
@@ -222,7 +225,7 @@ public class AdsActivity extends TabbarActivity{
 							liArrayList.add(adDetailComponent);
 						}
 						Intent intent = new Intent(getApplicationContext(),
-								CopyOfAdsDetailActivity.class);
+								AdsDetailActivity.class);
 						//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						intent.putParcelableArrayListExtra("data", liArrayList);
 						intent.putExtra("ADS_ROW_PRESSED", position);
@@ -349,7 +352,8 @@ public class AdsActivity extends TabbarActivity{
 		@Override
 		protected void onResume() {
 		    super.onResume();
-		    
+		   c = AdsActivity.this;
+		   Constant.activity.add(c);
 		   if(activity_source_name.equals("2"))
 		   {
 		    layout_city.setBackgroundResource(R.drawable.menuselector);

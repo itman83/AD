@@ -3,6 +3,7 @@ package com.cnfa.Activity;
 import java.util.ArrayList;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -37,6 +38,7 @@ public class FavouriteSearchResuletActivity extends TabbarActivity {
 	private EditText edSearch;
 	private ImageView btnSearch;
 	String searchWord=null;
+	Context c;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.adlist_fav_search);
 		layout_favourite.setBackgroundResource(R.drawable.menuselector);
@@ -74,6 +76,7 @@ public class FavouriteSearchResuletActivity extends TabbarActivity {
 		
 	}
 
+	
 	public class MySearchListAdapter extends BaseAdapter {
 		private final Activity context;
 
@@ -267,6 +270,10 @@ public class FavouriteSearchResuletActivity extends TabbarActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+	
+	    c = FavouriteSearchResuletActivity.this;
+	    Constant.activity.add(c);
+
 		layout_favourite.setBackgroundResource(R.drawable.menuselector);
 		layout_img_favourite
 				.setBackgroundResource(R.drawable.favouriteiconactive);

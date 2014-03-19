@@ -5,10 +5,14 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -46,7 +50,8 @@ public class CityListActivity extends TabbarActivity {
 	private ArrayList<NewsPaperModel> newsPaperArraylist = new ArrayList<NewsPaperModel>();
 	private EditText edSearch;
 	private ImageView btnSearch;
-
+	final int RESULT_CLOSE_ALL=1234;
+Context c;
 	@SuppressWarnings("deprecation")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.citylist);
@@ -81,6 +86,7 @@ public class CityListActivity extends TabbarActivity {
 					intent.putExtra("SEARCH_WORD", edSearch.getText()
 							.toString());
 					startActivity(intent);
+					
 				}
 //				if(edSearch.getText().toString().length()>0)
 //				new searchAdsTask(Constant.SEARCH_FROM_NEWSPAPER,edSearch.getText().toString()).execute();
@@ -370,9 +376,71 @@ public class CityListActivity extends TabbarActivity {
 	@Override
 	protected void onResume() {
 	    super.onResume();
+	   c= CityListActivity.this;
+	   Constant.activity.add(c);
 	   
 	    layout_city.setBackgroundResource(R.drawable.menuselector);
 		layout_img_city.setBackgroundResource(R.drawable.cityiconactive);
 		return;
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(CityListActivity.this);
+		    builder.setTitle("您确定要退出《凡人凡事》吗？");
+		    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing but close the dialog
+
+		            dialog.dismiss();
+		           
+					for(int i=0;i<Constant.activity.size();i++)	
+					{
+						((Activity) Constant.activity.get(i)).finish();
+
+					}
+					
+					Constant.activity.clear();
+					setResult(RESULT_CLOSE_ALL);
+		            finish();
+		        }
+
+		    });
+
+		    builder.setNegativeButton("否 ", new DialogInterface.OnClickListener() {
+
+		        @Override
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing
+		            dialog.dismiss();
+		        }
+		    });
+
+		    AlertDialog alert = builder.create();
+		    alert.show();
+		   
+		}
+		return super.onKeyDown(keyCode, event);
+
+		}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    switch(resultCode)
+	    {
+	    case RESULT_CLOSE_ALL:
+	        setResult(RESULT_CLOSE_ALL);
+	        finish();
+	    }
+	    super.onActivityResult(requestCode, resultCode, data);
+	}
+	
 }

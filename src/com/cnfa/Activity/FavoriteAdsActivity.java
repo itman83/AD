@@ -4,8 +4,12 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -39,6 +43,7 @@ public class FavoriteAdsActivity extends TabbarActivity {
 	private EditText edSearch;
 	private ImageView btnSearch;
 	TextView noIteTextView;
+	Context c ;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.adslist);
@@ -119,7 +124,13 @@ public class FavoriteAdsActivity extends TabbarActivity {
 
 	}
 
-	
+	@Override
+	protected void onResume() {
+    super.onResume();
+    c = FavoriteAdsActivity.this;
+    Constant.activity.add(c);
+	   
+	}
 
 	@SuppressLint("DefaultLocale")
 	public ArrayList<SearchAdsModel> performSearch(String searchString) {
@@ -217,7 +228,7 @@ public class FavoriteAdsActivity extends TabbarActivity {
 						liArrayList.add(adDetailComponent);
 					}
 					Intent intent = new Intent(getApplicationContext(),
-							CopyOfAdsDetailActivity.class);
+							AdsDetailActivity.class);
 					// intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 					intent.putExtra("data", liArrayList);
 					intent.putExtra("bottomtext", bottomText);
@@ -394,4 +405,52 @@ public class FavoriteAdsActivity extends TabbarActivity {
 			noIteTextView.setText(R.string.no_result_found);
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(FavoriteAdsActivity.this);
+		    builder.setTitle("您确定要退出《凡人凡事》吗？");
+		    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing but close the dialog
+
+		            dialog.dismiss();
+		        	for(int i=0;i<Constant.activity.size();i++)	
+					{
+						((Activity) Constant.activity.get(i)).finish();
+
+					}
+					
+					Constant.activity.clear();
+					//setResult(RESULT_CLOSE_ALL);
+		            finish();
+		        }
+
+		    });
+
+		    builder.setNegativeButton("否 ", new DialogInterface.OnClickListener() {
+
+		        @Override
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing
+		            dialog.dismiss();
+		        }
+		    });
+
+		    AlertDialog alert = builder.create();
+		    alert.show();
+		   
+		}
+		return super.onKeyDown(keyCode, event);
+
+		}
 }

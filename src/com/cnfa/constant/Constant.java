@@ -1,10 +1,14 @@
 package com.cnfa.constant;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
 
 public class Constant {
+
 	public static final String MSG_NETWORK_CONNECTION_NOT_AVAILABLE="Network connection not available.";
 	public static final String MSG_CONTENT_NOT_AVAILABLE = "Content not available.";
 	public static final String MSG_SEARCH_CONTENT = "Enter text";
@@ -49,7 +53,7 @@ public class Constant {
 
 	
 	
-	
+	public static ArrayList<Context>activity = new ArrayList<Context>();
 	
 	public static String DB_PATH = "";
 	
@@ -152,4 +156,6 @@ public class Constant {
 		    Toast.makeText(context, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	
 }

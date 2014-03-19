@@ -9,6 +9,7 @@ import org.json.JSONTokener;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -31,6 +32,7 @@ public class PrivacyActivity extends TabbarActivity{
 	private InputStream in = null;
 	ArrayList<PrivacyModel> arr_Privacy= new ArrayList<PrivacyModel>();
 	private TextView txtPrivacy = null;
+	Context c;
 
 		public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState,R.layout.privacy);
@@ -206,6 +208,12 @@ public class PrivacyActivity extends TabbarActivity{
 		protected void onResume() {
 			// TODO Auto-generated method stub
 			super.onResume();
+			
+		
+		    c = PrivacyActivity.this;
+		    Constant.activity.add(c);
+			   
+	
 			layout_aboutus.setBackgroundDrawable(getResources().getDrawable(
 					R.drawable.menuselector));
 			layout_img_aboutus.setBackgroundDrawable(getResources().getDrawable(

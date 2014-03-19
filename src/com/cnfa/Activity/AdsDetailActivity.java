@@ -2,6 +2,7 @@ package com.cnfa.Activity;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.view.ViewGroup.LayoutParams;
@@ -44,7 +45,7 @@ public class AdsDetailActivity extends TabbarActivity {
 	int preRegion = region1;
 	boolean isRegionChange = false;
 	int region = 2;
-
+   Context c;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.adslistdetail);
 		
@@ -102,6 +103,14 @@ public class AdsDetailActivity extends TabbarActivity {
 		txtbreadcrumb.setTypeface(Utility
 				.setRegularFont(getApplicationContext()));
 
+	}
+	
+	@Override
+	protected void onResume() {
+	    super.onResume();
+	   c = AdsDetailActivity.this;
+	   Constant.activity.add(c);
+	
 	}
 
 	void addDots(int initialDot, int region) {

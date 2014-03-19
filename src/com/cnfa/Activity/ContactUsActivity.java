@@ -3,6 +3,7 @@ package com.cnfa.Activity;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -31,6 +32,7 @@ public class ContactUsActivity extends TabbarActivity {
 	private ImageView imgwiebo, imgtencent;
 	ArrayList<ContactUsModel> arr_terms = new ArrayList<ContactUsModel>();
 	RelativeLayout contentlayout;
+	Context c;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.contactus);
@@ -78,6 +80,14 @@ public class ContactUsActivity extends TabbarActivity {
 					Constant.MSG_NETWORK_CONNECTION_NOT_AVAILABLE);
 
 		}
+	}
+	
+	@Override
+	protected void onResume() {
+    super.onResume();
+    c = ContactUsActivity.this;
+    Constant.activity.add(c);
+	   
 	}
 
 	public class ContactUsTask extends AsyncTask<String, Integer, String> {

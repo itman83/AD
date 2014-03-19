@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -62,6 +63,7 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 	private TextView txtCity,btntext;
 	private EditText edSearch;
 	private ImageView btnSearch;
+	Context c;
 	//String classname=null;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.citylistnewspaper);
@@ -171,6 +173,13 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 		}
 	}
 
+	@Override
+	protected void onResume() {
+    super.onResume();
+    c = CityListToNewspaperActivity.this;
+    Constant.activity.add(c);
+	   
+	}
 	public class newsPaperLoadLocalTask extends
 			AsyncTask<String, Integer, String> {
 		ArrayList<NewsPaperModel> listLocalData = null;
@@ -498,17 +507,29 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 		protected void onPostExecute(String result) {
 			//dismissDialog(PROGRESS_DIALOG);
 			CustomProgressDialog.removeDialog();
-			// check for updation
+			Intent intent = new Intent(getApplicationContext(),
+					CategoryActivity.class);
+			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			/*intent.putExtra("categorydata", categoryArraylist);*/
+			
+			intent.putExtra("cityname", _cityName);
+			intent.putExtra("newspapername", _newsPaper);
+			intent.putExtra("newspaperid", _id);
+			intent.putExtra("TAG_FOR_BOTTOMTEXT", "1");
+			intent.putExtra("ACTIVITY_NAME",Constant.ACTIVITY_CITY);
+
+			startActivity(intent);
+			/*// check for updation
 			ArrayList<CategoryModel> listLocalData = new ArrayList<CategoryModel>();
 			listLocalData = DbSync.getCategorylocalData(
 					getApplicationContext(), "categorytable");
 
 			int check_for_deletion = 0;
 
-			/*
+			
 			 * if record available in local data base then checking last updated
 			 * time
-			 */
+			 
 
 			if (listLocalData.size() > 0) {
 				if (listLocalData.size() > 0
@@ -543,9 +564,9 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 					categoryArraylist = listLocalData;
 				}
 			} else {
-				/*
+				
 				 * save recard in local
-				 */
+				 
 				boolean b = false;
 				b = DbSync.saveCategorydata(getApplicationContext(),
 						categoryArraylist);
@@ -555,10 +576,10 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 				categoryArraylist.clear();
 				categoryArraylist = listLocalData;
 			}
-			/*
+			
 			 * if (categoryArraylist.size() > 0 ) new
 			 * ImageDownloadAsync().execute("Start");
-			 */
+			 
 
 			if(NewspaperActivity.categoryArraylist != null)
 				NewspaperActivity.categoryArraylist.clear();
@@ -567,7 +588,7 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 			Intent intent = new Intent(getApplicationContext(),
 					CategoryActivity.class);
 			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			/*intent.putExtra("categorydata", categoryArraylist);*/
+			intent.putExtra("categorydata", categoryArraylist);
 			
 			intent.putExtra("cityname", _cityName);
 			intent.putExtra("newspapername", _newsPaper);
@@ -576,7 +597,8 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 			intent.putExtra("ACTIVITY_NAME",Constant.ACTIVITY_CITY);
 
 			startActivity(intent);
-			/*overridePendingTransition(R.anim.slide_in_left,
+		
+			overridePendingTransition(R.anim.slide_in_left,
 					R.anim.slide_out_left);*/
 		}
 	}
@@ -630,6 +652,8 @@ public class CityListToNewspaperActivity extends TabbarActivity {
 
 		}
 	}
+
+	
 
 //	@Override
 //	protected void onResume() {

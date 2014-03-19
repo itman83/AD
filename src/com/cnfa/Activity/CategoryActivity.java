@@ -4,13 +4,14 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
-
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -47,6 +48,7 @@ public class CategoryActivity extends TabbarActivity{
 	  String className=null;
 	private TextView txtCity;
 	String activity_source_name=null;
+	Context c;
 
 		public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState,R.layout.category);
@@ -69,6 +71,8 @@ public class CategoryActivity extends TabbarActivity{
 			 _newspaperName = getIntent().getStringExtra("newspapername"); 
 			 _id = getIntent().getStringExtra("newspaperid"); 
 			 cityName = getIntent().getStringExtra("cityname");
+			 
+			
 			 
 			 if(_newspaperName!=null){
 				 if(cityName != null){
@@ -357,7 +361,9 @@ public class CategoryActivity extends TabbarActivity{
 		@Override
 		protected void onResume() {
 		    super.onResume();
-		
+
+		  c= CategoryActivity.this;
+		  Constant.activity.add(c);
 		if(className != null){    
 		   if(className.equals("2"))
 		   {

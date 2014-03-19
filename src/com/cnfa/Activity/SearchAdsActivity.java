@@ -250,6 +250,7 @@ public class SearchAdsActivity extends TabbarActivity {
 					 * list.get(position).getCity()); intent.putExtra("date",
 					 * list.get(position).getCreationTime());
 					 */startActivity(intent);
+					 finish();
 					overridePendingTransition(R.anim.slide_in_left,
 							R.anim.slide_out_left);
 

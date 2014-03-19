@@ -7,10 +7,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -31,6 +36,7 @@ public class AboutUsActivity extends TabbarActivity {
 	ArrayList<ContactUsModel> arr_aboutUs = new ArrayList<ContactUsModel>();
 	private TextView txtAboutUs = null;
 	private Button btn_Privacy, btn_termofuse, btn_feedback, btn_ContactUs;
+	Context c ;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState,R.layout.aboutus);
@@ -100,6 +106,14 @@ public class AboutUsActivity extends TabbarActivity {
 
 		}
 
+	}
+	
+	@Override
+	protected void onResume() {
+    super.onResume();
+    c = AboutUsActivity.this;
+    Constant.activity.add(c);
+	   
 	}
 
 	public class aboutUsTask extends AsyncTask<String, Integer, String> {
@@ -208,5 +222,53 @@ public class AboutUsActivity extends TabbarActivity {
 			// Constant.MSG_CONTENT_NOT_AVAILABLE);
 		}
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
+
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+			AlertDialog.Builder builder = new AlertDialog.Builder(AboutUsActivity.this);
+		    builder.setTitle("您确定要退出《凡人凡事》吗？");
+		    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing but close the dialog
+
+		            dialog.dismiss();
+		        	for(int i=0;i<Constant.activity.size();i++)	
+					{
+						((Activity) Constant.activity.get(i)).finish();
+
+					}
+					
+					Constant.activity.clear();
+					//setResult(RESULT_CLOSE_ALL);
+		            finish();
+		        }
+
+		    });
+
+		    builder.setNegativeButton("否 ", new DialogInterface.OnClickListener() {
+
+		        @Override
+		        public void onClick(DialogInterface dialog, int which) {
+		            // Do nothing
+		            dialog.dismiss();
+		        }
+		    });
+
+		    AlertDialog alert = builder.create();
+		    alert.show();
+		   
+		}
+		return super.onKeyDown(keyCode, event);
+
+		}
 
 }

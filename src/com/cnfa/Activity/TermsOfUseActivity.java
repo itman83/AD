@@ -7,6 +7,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
@@ -27,6 +28,7 @@ public class TermsOfUseActivity extends TabbarActivity {
 	private InputStream in = null;
 	ArrayList<TermsOfUseModel> arr_terms = new ArrayList<TermsOfUseModel>();
 	private TextView txtTermsofuse = null;
+	Context c;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.termsofuse);
@@ -45,6 +47,14 @@ public class TermsOfUseActivity extends TabbarActivity {
 					Constant.MSG_NETWORK_CONNECTION_NOT_AVAILABLE);
 		}
 
+	}
+	
+	@Override
+	protected void onResume() {
+    super.onResume();
+    c = TermsOfUseActivity.this;
+    Constant.activity.add(c);
+	   
 	}
 
 	public class termsofuseTask extends AsyncTask<String, Integer, String> {

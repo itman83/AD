@@ -1,5 +1,9 @@
 package com.cnfa.category;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
@@ -7,7 +11,10 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -26,6 +33,8 @@ import com.cnfa.constant.Constant;
 import com.cnfa.model.CategoryModel;
 import com.cnfa.model.SearchAdsModel;
 import com.cnfa.utility.Utility;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 
 
 @SuppressLint("ValidFragment")
@@ -44,6 +53,8 @@ public class CategoryFragment extends Fragment {
 	String activity_source_name=null;
 	private String _newsPaperName;
 	private String _cityName;
+	DisplayImageOptions doption=null;
+    private ImageLoadingListener animateFirstListener =null;
   
 	public CategoryFragment(Context mContext2, ArrayList<CategoryModel> _list, int position, String newspapername,String cityName, String activity_name) {
     	categoryList = _list;
@@ -58,7 +69,13 @@ public class CategoryFragment extends Fragment {
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      
+        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+        .detectDiskReads()
+        .detectDiskWrites()
+        .detectNetwork()   // or .detectAll() for all detectable problems
+        .penaltyLog()
+        .build());
+
     }
     
     public void SetContext(Context context){
@@ -158,9 +175,13 @@ public class CategoryFragment extends Fragment {
 		 pager = (ViewPager) container.findViewById(R.id.view_pager);
 		if(_position==2)
 			_position=1;
+		ImageLoader imgLoader = new ImageLoader(mContext);
 		 for(int i=0;i<categoryList.size();i++){
 			 final int index = i;
 			 if(i==0){
+					
+					imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img1);
+			// img1.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 			 img1.setImageBitmap(categoryList.get(i).getBitmap());
 			 txt1.setText(categoryList.get(i).getCategory());
 			 relNoficationCount1.setVisibility(View.VISIBLE);
@@ -180,7 +201,9 @@ public class CategoryFragment extends Fragment {
 				});
 			 }
 			 if(i==1){
-				 img2.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img2);
+				// img2.setImageBitmap(categoryList.get(i).getBitmap());
+				// img2.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt2.setText(categoryList.get(i).getCategory());
 				 relNoficationCount2.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -200,7 +223,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==2){
-				 img3.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img3);
+				// img3.setImageBitmap(categoryList.get(i).getBitmap());
+				// img3.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt3.setText(categoryList.get(i).getCategory());
 				 relNoficationCount3.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -220,7 +245,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==3){
-				 img4.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img4);
+				// img4.setImageBitmap(categoryList.get(i).getBitmap());
+				 //img4.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt4.setText(categoryList.get(i).getCategory());
 				 relNoficationCount4.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -240,7 +267,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==4){
-				 img5.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img5);
+				// img5.setImageBitmap(categoryList.get(i).getBitmap());
+				 //img5.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt5.setText(categoryList.get(i).getCategory());
 				 relNoficationCount5.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -259,7 +288,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==5){
-				 img6.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img6);
+				// img6.setImageBitmap(categoryList.get(i).getBitmap());
+				 //img6.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt6.setText(categoryList.get(i).getCategory());
 				 relNoficationCount6.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -278,7 +309,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==6){
-				 img7.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img7);
+				 //img7.setImageBitmap(categoryList.get(i).getBitmap());
+				 //img7.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt7.setText(categoryList.get(i).getCategory());
 				 relNoficationCount7.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -297,7 +330,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==7){
-				 img8.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img8);
+				 //img8.setImageBitmap(categoryList.get(i).getBitmap());
+				 //img8.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt8.setText(categoryList.get(i).getCategory());
 				 relNoficationCount8.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -316,7 +351,9 @@ public class CategoryFragment extends Fragment {
 					});
 			 }
 			 if(i==8){
-				 img9.setImageBitmap(categoryList.get(i).getBitmap());
+				 imgLoader.DisplayImage(categoryList.get(i).getLogoUrl(), R.drawable.roundcorneredbackground, img9);
+				 //img9.setImageBitmap(categoryList.get(i).getBitmap());
+				// img9.setImageBitmap(getBitmapFromURL(categoryList.get(i).getLogoUrl()));
 				 txt9.setText(categoryList.get(i).getCategory());
 				 relNoficationCount9.setVisibility(View.VISIBLE);
 				 if(Integer.parseInt(categoryList.get(i).getTotal_ads())>99)
@@ -414,6 +451,24 @@ public class CategoryFragment extends Fragment {
 		}
 	}*/
 	
+    public static Bitmap getBitmapFromURL(String src) {
+        try {
+            URL url = new URL(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setDoInput(true);
+            connection.connect();
+            InputStream input = connection.getInputStream();
+            Bitmap myBitmap = BitmapFactory.decodeStream(input);
+            return myBitmap;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+   
+    
 	
 	protected Dialog onCreateDialog(int id) {
 		switch (id) {

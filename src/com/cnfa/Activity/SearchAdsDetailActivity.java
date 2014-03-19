@@ -43,13 +43,13 @@ public class SearchAdsDetailActivity extends TabbarActivity
 	int preRegion = region1;
 	boolean isRegionChange = false;
 	int region = 2;
-	 PageIndicator mIndicator;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView( R.layout.copy_of_adslistdetail);
+		setContentView( R.layout.adslistdetail);
 //		getWindow().setSoftInputMode(
 //				WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 //		Constant.FAV_SCREEN=2;
@@ -135,8 +135,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 		mPager.setAdapter(mAdapter);
 		mPager.setCurrentItem(pageCurrent);
 		
-		 mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
-	     mIndicator.setViewPager(mPager);
+		
 
 		totalPagesInPager = categoryListtemp.size();
 		if (pageCurrent < totalPagesInPager / 10 * 10) {
@@ -147,7 +146,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 		addDots(pageCurrent % 10, region);
 		
 
-/*		mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+		mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 			@Override
 			public void onPageScrolled(int position, float positionOffset,
 					int positionOffsetPixels) {
@@ -177,7 +176,7 @@ public class SearchAdsDetailActivity extends TabbarActivity
 			public void onPageScrollStateChanged(int state) {
 			
 			}
-		});*/
+		});
 
 	}
 }

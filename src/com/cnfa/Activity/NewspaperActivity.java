@@ -10,15 +10,20 @@ import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -56,10 +61,14 @@ public class NewspaperActivity extends TabbarActivity {
 	private EditText edSearch;
 	private ImageView btnSearch;
 	public String _newsPaper, _id;
+	final int RESULT_CLOSE_ALL = 1234;
+	Context c;
 
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState, R.layout.newspaper);
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
+		StrictMode.setThreadPolicy(policy); 
 		edSearch = (EditText) findViewById(R.id.edsearch);
 		btnSearch = (ImageView) findViewById(R.id.btnsearch);
 		listview = (ListView) findViewById(R.id.newspaperlist);
@@ -82,6 +91,7 @@ public class NewspaperActivity extends TabbarActivity {
 					intent.putExtra("SEARCH_WORD", edSearch.getText()
 							.toString());
 					startActivity(intent);
+					
 				}
 
 			}
@@ -411,6 +421,7 @@ public class NewspaperActivity extends TabbarActivity {
 				NewspaperToCategoryParserHandler newsPaperToCategoryparserHandler = new NewspaperToCategoryParserHandler();
 				categoryArraylist = newsPaperToCategoryparserHandler
 						.getParseDataByModel(res);
+Log.d("", "PRO"+categoryArraylist.get(0).getTotal_ads());
 
 			}
 
@@ -423,16 +434,25 @@ public class NewspaperActivity extends TabbarActivity {
 
 		protected void onPostExecute(String result) {
 			// check for updation
+			CustomProgressDialog.removeDialog();
+			Intent intent = new Intent(getApplicationContext(),
+					CategoryActivity.class);
+			//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			intent.putExtra("newspaperid", _id);
+			intent.putExtra("ACTIVITY_NAME", Constant.ACTIVITY_NEWS);
+			intent.putExtra("newspapername", _newsPaper);
+			startActivity(intent);
+/*			
 			ArrayList<CategoryModel> listLocalData = new ArrayList<CategoryModel>();
 			listLocalData = DbSync.getCategorylocalData(
 					getApplicationContext(), "categorytable");
 
 			int check_for_deletion = 0;
 
-			/*
+			
 			 * if record available in local data base then checking last updated
 			 * time
-			 */
+			 
 
 			if (listLocalData.size() > 0) {
 				if (listLocalData.size() > 0
@@ -465,11 +485,12 @@ public class NewspaperActivity extends TabbarActivity {
 							categoryArraylist);
 					categoryArraylist.clear();
 					categoryArraylist = listLocalData;
+					Log.d("", "PRO1"+categoryArraylist.get(0).getTotal_ads());
 				}
 			} else {
-				/*
+				
 				 * save recard in local
-				 */
+				 
 				boolean b = false;
 				b = DbSync.saveCategorydata(getApplicationContext(),
 						categoryArraylist);
@@ -479,6 +500,7 @@ public class NewspaperActivity extends TabbarActivity {
 				categoryArraylist.clear();
 				categoryArraylist = listLocalData;
 				CustomProgressDialog.removeDialog();
+				Log.d("", "PRO2"+categoryArraylist.get(0).getTotal_ads());
 				Intent intent = new Intent(getApplicationContext(),
 						CategoryActivity.class);
 				//intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -486,13 +508,14 @@ public class NewspaperActivity extends TabbarActivity {
 				intent.putExtra("ACTIVITY_NAME", Constant.ACTIVITY_NEWS);
 				intent.putExtra("newspapername", _newsPaper);
 				startActivity(intent);
+				
 			} else {
 				if (categoryArraylist.size() > 0)
 					new CategoryImageDownloadAsync().execute("Start");
 			}
 
 			// dismissDialog(PROGRESS_DIALOG);
-
+*/
 		}
 	}
 
@@ -645,10 +668,72 @@ public class NewspaperActivity extends TabbarActivity {
 		super.onResume();
 //		layout_city.invalidate();
 //		layout_city.refreshDrawableState();
+		c= NewspaperActivity.this;
+		Constant.activity.add(c);
+		
 		layout_newspaper.setBackgroundResource(R.drawable.menuselector);
 		layout_img_newspaper
 				.setBackgroundResource(R.drawable.newspapericonactive);
 		return;
 	}
+	
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+		super.onBackPressed();
 
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+	if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+		AlertDialog.Builder builder = new AlertDialog.Builder(NewspaperActivity.this);
+	    builder.setTitle("您确定要退出《凡人凡事》吗？");
+	    builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+
+	        public void onClick(DialogInterface dialog, int which) {
+	            // Do nothing but close the dialog
+
+	            dialog.dismiss();
+	           
+	        	for(int i=0;i<Constant.activity.size();i++)	
+				{
+					((Activity) Constant.activity.get(i)).finish();
+
+				}
+				
+				Constant.activity.clear();
+				setResult(RESULT_CLOSE_ALL);
+	            finish();
+	        }
+
+	    });
+
+	    builder.setNegativeButton("否 ", new DialogInterface.OnClickListener() {
+
+	        @Override
+	        public void onClick(DialogInterface dialog, int which) {
+	            // Do nothing
+	            dialog.dismiss();
+	        }
+	    });
+
+	    AlertDialog alert = builder.create();
+	    alert.show();
+	   
+	}
+	return super.onKeyDown(keyCode, event);
+
+	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    switch(resultCode)
+	    {
+	    case RESULT_CLOSE_ALL:
+	        setResult(RESULT_CLOSE_ALL);
+	        finish();
+	    }
+	    super.onActivityResult(requestCode, resultCode, data);
+	}
+	
 }
